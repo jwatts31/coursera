@@ -24,7 +24,7 @@ def computepay(hours_worked,pay_rate):
         quit() 
     
     if float_hours_worked <= 40:
-        totalPay = float_hours_worked * float_pay_rate
+        totalPay = float("{0:.2f}".format(float_hours_worked * float_pay_rate))
     elif float_hours_worked > 40:
     
         overtimeRate = 1.5
@@ -37,7 +37,7 @@ def computepay(hours_worked,pay_rate):
         #calculate overtime pay
         totalOvertime = float_hours_worked - overTimeBegins
         overTimePay =  totalOvertime * overtimeTotalRate
-        totalPay = overTimePay + initialPay
+        totalPay = float("{0:.2f}".format(overTimePay + initialPay))
     
     else:
         print "Could not calculate the total pay"
