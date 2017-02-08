@@ -21,8 +21,6 @@ def calculateSum(file_name):
             line = line.rstrip()
             #Does the line start with X-DSPAM-Confidence:?
             if line.startswith('X-DSPAM-Confidence:'):
-                    #Add one to the count, will be used later for calculating the average
-                    count = count + 1
                     #Find the position of the colon
                     post_semi_colon = line.find(':')
                     #Get all characters after the colon
@@ -39,7 +37,7 @@ def calculateSum(file_name):
             add_value = add_value + value
         
         #Calculate the average
-        calc_average = (add_value)/(count)
+        calc_average = (add_value)/len(average)
         
         return calc_average
     
