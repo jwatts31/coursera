@@ -37,11 +37,14 @@ def calculateSum(file_name):
             add_value = add_value + value
         
         #Calculate the average
-        calc_average = (add_value)/len(average)
+        if len(average) >0:
+            calc_average = (add_value)/len(average)
+        else:
+            calc_average = 0
         
         return calc_average
     
-    
+'''   
 #This is for the class
 file_name = raw_input("Enter in valid filename: ")
 
@@ -49,6 +52,6 @@ file_name = raw_input("Enter in valid filename: ")
 average = calculateSum(file_name)
 
 print "Average spam confidence:",average
-                
+'''              
                 
     
