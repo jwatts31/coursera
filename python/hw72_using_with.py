@@ -15,7 +15,6 @@ def calculateSum(file_name):
     with open(file_name,'r') as file_handler:
    
         #Initialize count & average
-        count = 0
         average = []
         for line in file_handler:
             line = line.rstrip()
