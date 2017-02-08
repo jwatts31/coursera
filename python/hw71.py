@@ -17,9 +17,10 @@ def printUpper(file_name):
         print line.upper()
 
         
-
+#This is for the class
 file_name = raw_input("Enter in valid filename: ")
 
+#Calling Function
 printUpper(file_name)
 
 
