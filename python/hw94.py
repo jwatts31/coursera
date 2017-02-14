@@ -38,7 +38,7 @@ file_name = raw_input("Enter in valid filename: ")
 #Calling Function
 emails = get_Senders(file_name)
 #get the most prolific committer
-#Coursera auto grader does nto support: maximum = max(emails, key=emails.get), have to do by hand
+#Coursera auto grader does not support maximum = max(emails, key=emails.get), have to do by hand
 max_email = None
 max_count = None
 
