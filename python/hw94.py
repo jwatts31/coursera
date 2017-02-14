@@ -2,7 +2,7 @@
 9.4 Write a program to read through the mbox-short.txt and figure out who has the sent the greatest number of mail messages. The program looks for 'From ' lines and takes the second word of those lines as the person who sent the mail. The program creates a Python dictionary that maps the sender's mail address to a count of the number of times they appear in the file. After the dictionary is produced, the program reads through the dictionary using a maximum loop to find the most prolific committer.
 '''
 
-def get_Senders(file_name):
+def get_senders(file_name):
     
     try:
         file_handler = open(file_name,'r')
@@ -36,7 +36,7 @@ def get_Senders(file_name):
 file_name = raw_input("Enter in valid filename: ")
 
 #Calling Function
-emails = get_Senders(file_name)
+emails = get_senders(file_name)
 #get the most prolific committer
 #Coursera auto grader does not support maximum = max(emails, key=emails.get), have to do by hand
 max_email = None
