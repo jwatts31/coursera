@@ -25,7 +25,6 @@ def get_hours(file_name):
                 if ':' in word:
                     #Split on the colon to get the hour
                     hour_spl = word.split(':')
-                    If the words exists add 1 to the count
                     #If the hour does not exist, initalize to 0 and add 1
                     #If it does exist, add one
                     time_and_count[hour_spl[0]] = time_and_count.get(hour_spl[0], 0) + 1
