@@ -52,14 +52,17 @@ def parse_comment_counts(address):
         print "URL is invalid, please enter a valid URL"
         return None
     else:
-        url = urllib.urlopen(address)
+        try:
+            url = urllib.urlopen(address)
+        except:
+            print "Unable to open address"
+            return None
         
         data = url.read() 
         
         #Attempt to load JSON
         try: 
             js = json.loads(data)  
-            print js
         except: 
             js = None
         

@@ -64,7 +64,6 @@ def parse_comment_counts(address):
         #Attempt to load JSON
         try: 
             js = json.loads(data)  
-            print js
         except: 
             js = None
         
