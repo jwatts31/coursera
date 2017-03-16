@@ -1,4 +1,7 @@
 '''
+WORK IN PROGRESS. MANY CHANGES STILL NEEDED BUT IT WORKS!
+
+
 Counting Organizations
 This application will read the mailbox data (mbox.txt) count up the number email messages per organization (i.e. domain name of the email address) using a database with the following schema to maintain the counts.
 
