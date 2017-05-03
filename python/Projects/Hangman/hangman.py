@@ -148,9 +148,9 @@ def create_dashes(word):
     for letter in word:
         # Don't hide hyphens
         if letter == '-':
-            word_only_dashes += '- '
+            word_only_dashes += '-'
         else:
-            word_only_dashes += '_ '
+            word_only_dashes += '_'
 
     return word_only_dashes
 
@@ -177,44 +177,76 @@ def pick_word(file_name):
                 continue
         return line_number
 
-#def play_game():
+
 
 #def check_letter(word,letter_guess,word_with_dashes,past_guess,misses):
-def check_letter(word,letter_guess,dashes,misses):
+def check_letter(word,letter_guess,dashes,misses,winner):
     letter_pos = []
     new_word = word
     postion = None
     update_dashes = dashes
     misses_update = misses
+    lps = None
 
     for m in re.finditer(letter_guess,new_word):
          lps = m.start()
          letter_pos.append(lps)
+         print "letter_pos is",letter_pos
 
     if not letter_pos:
         misses_update += 1
     else:
         for x in letter_pos:
-            #print "X is",x
+            print "The letter",letter_guess,"was found in the word"
             update_dashes[x] = letter_guess
 
+            if '_' in update_dashes:
+                continue
+            else:
+                winner = True
 
 
-
-
-    return update_dashes, misses_update
+    return update_dashes, misses_update, winner
 
 def covert_to_string(to_convert):
 
     final = ""
     for y in to_convert:
-        final += y
+        final += y+" "
 
     return final
 
 
-#def end_hangman():
+def get_letter(guessed_letters):
 
+    letter_guess = None
+    guessed_letters_new = guessed_letters
+
+
+    while True:
+        letter_guess = raw_input("Enter in letter: ")
+
+
+        if letter_guess.isalpha() == False:
+            print "The letter you guessed is not an alphabetic character"
+            continue
+
+        elif len(letter_guess) > 1:
+            print "You can only enter one letter at a time"
+            continue
+        elif letter_guess in guessed_letters_new:
+            print "You have already guessed this letter"
+            continue
+        else:
+            try:
+                letter_guess.lower()
+            except:
+                sys.exit('Could covert your guess to a lower case')
+
+            guessed_letters_new += letter_guess
+            break
+
+    return guessed_letters_new
 
 def main():
     while True:
@@ -233,28 +265,31 @@ def main():
     print word
     dashes = create_dashes(word)
 
+    print "dashes are",dashes
+
     initial_prompt = covert_to_string(dashes)
 
     print "Your word is",initial_prompt
 
-    #picture = hangman_state(6)
-    #print word
-    #print dashes
-    #print "Here is your word: \n" + dashes
-
     misses = 0
     guessed_letters = []
     testing = dashes
+    currnt_prompt = ""
+    winner = False
 
     while True:
-        if misses <= 9:
-            letter_guess = raw_input("Enter in letter: ")
-            letter_guess.lower()
-            guessed_letters += letter_guess
+        if winner == True and misses<10:
+            print "Congragulations, you have won!"
+            main()
 
-            testing, misses = check_letter(word,letter_guess, dashes,misses)
+        elif misses <= 9:
 
-            print "Number of misses are", misses
+            guessed_letters = get_letter(guessed_letters)
+
+
+            testing, misses, winner = check_letter(word,guessed_letters[-1], dashes,misses, winner)
+
+            print "Number of misses are", misses,"out of 10"
 
             currnt_prompt = covert_to_string(testing)
 
@@ -270,7 +305,7 @@ def main():
             print "Final Hangman State is",state
             print "Letters guessed were",guessed_letters
             print "The word was",word
-            exit()
+            main()
         else:
             print "Something went wrong"
             exit()
