@@ -180,8 +180,8 @@ def pick_word(file_name):
 
     #Select a random integer
     try:
-        #stop_number = random.randint(0,(sum(1 for line in open(file_name))) - 1)
-        stop_number = 197560
+        stop_number = random.randint(0,(sum(1 for line in open(file_name))) - 1)
+        #stop_number = 197560
     except:
         sys.exit('Could not obtain a random number integer')
 
@@ -303,7 +303,7 @@ def main():
             print "Alright, maybe later"
             exit()
 
-    file_name = raw_input("Enter in valid filename of text document you want to pull words from: ")
+    file_name = raw_input("Enter in valid filename of text document you want to pull words from (the default is random_word.txt): ")
     if ( len(file_name) < 1 ) : file_name = 'random_word.txt'
 
     #Calling Function
