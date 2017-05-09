@@ -328,7 +328,7 @@ def main():
 
         elif misses <= 9:
             guessed_letters = get_letter(guessed_letters)
-
+            new_page()
             word_with_dashes, misses, winner = check_letter(word,guessed_letters[-1], word_with_dashes,misses, winner)
 
             current_word_to_user = covert_to_string(word_with_dashes)
@@ -339,7 +339,7 @@ def main():
             print "What you have guessed correctly is",current_word_to_user,'\n'
             print "Current Hangman State is",state,'\n'
             print "Letters guessed are",guessed_letters,'\n'
-            new_page()
+
 
 
         elif misses == 10:
