@@ -297,6 +297,7 @@ def main():
         enter_game = raw_input("Do you want to play Hangman? Enter Yes or No. ")
 
         if isinstance(enter_game, str) and (enter_game.lower() == 'yes'):
+
             print "Yes it is time to play"
             break
         else:
@@ -312,8 +313,9 @@ def main():
     word_with_dashes = create_dashes(word)
 
     initial_word_to_user = covert_to_string(word_with_dashes)
+    new_page()
 
-    print "Your word is",initial_word_to_user
+    print "Your word is",initial_word_to_user,'\n'
 
     #Initialize variables
     misses = 0
@@ -343,6 +345,7 @@ def main():
 
 
         elif misses == 10:
+            new_page()
 
             print "Game Over"
             print "What you have guessed correctly was",current_word_to_user,'\n'
