@@ -304,7 +304,7 @@ def main():
             print "Alright, maybe later"
             exit()
 
-    file_name = raw_input("Enter in valid filename of text document you want to pull words from (the default is random_word.txt): ")
+    file_name = raw_input("Enter in valid filename of text document you want to pull words from (Hit enter to use the default file): ")
     if ( len(file_name) < 1 ) : file_name = 'random_word.txt'
 
     #Calling Function
@@ -347,7 +347,7 @@ def main():
         elif misses == 10:
             new_page()
 
-            print "Game Over"
+            print "Game Over",'\n'
             print "What you have guessed correctly was",current_word_to_user,'\n'
             print "Final Hangman State is",state,'\n'
             print "Letters guessed were",guessed_letters,'\n'
